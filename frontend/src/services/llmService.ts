@@ -47,15 +47,15 @@ export interface ChatMessage {
  */
 export interface ToolCallResult {
     type:
-        | 'text'
-        | 'destination_recommendation'
-        | 'destination_saved'
-        | 'route_generated'
-        | 'route_approval_required'
-        | 'itinerary_modified'
-        | 'weather_info'
-        | 'profile_updated'
-        | 'tool_result';
+    | 'text'
+    | 'destination_recommendation'
+    | 'destination_saved'
+    | 'route_generated'
+    | 'route_approval_required'
+    | 'itinerary_modified'
+    | 'weather_info'
+    | 'profile_updated'
+    | 'tool_result';
     destinations?: MapDestination[];
     savedDestination?: MapDestination;
     /** Raw route data array for the route approval flow. */
@@ -316,7 +316,7 @@ export async function send_message(
 ): Promise<ToolCallResult> {
     try {
         // Take only the last 10 messages for context
-        const recentHistory = history.slice(-10);
+        const recentHistory = history.slice(-20);
 
         const response = await fetch(`${API_BASE_URL}/llm/chat`, {
             method: 'POST',
